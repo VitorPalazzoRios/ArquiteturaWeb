@@ -1,4 +1,4 @@
-package aula4_execicio.demo;
+package com.example.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

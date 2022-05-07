@@ -1,34 +1,33 @@
-package aula4_execicio.demo.entity;
+package com.example.demo.entity;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_produto")
-public class Produto {
+@Table(name = "tb_categoria")
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
     @Column(length = 100)
     private String nome;
-    private String qtde;
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
+    private String descricao;
+    @OneToMany(mappedBy = "categoria")
+    private List<Produto> produto;
     
-    public Produto(int id, String nome, String qtde) {
+    public Categoria(int id, String nome, String descricao) {
         this.id = id;
         this.nome = nome;
-        this.qtde = qtde;
+        this.descricao = descricao;
     }
-    public Produto() {
+    public Categoria() {
     }
     public int getId() {
         return id;
@@ -42,14 +41,11 @@ public class Produto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public String getQtde() {
-        return qtde;
+    public String getDescricao() {
+        return descricao;
     }
-    public void setQtde(String qtde) {
-        this.qtde = qtde;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-}
 
+}

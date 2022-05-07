@@ -1,5 +1,9 @@
-package controllers;
+package com.example.demo.controllers;
 import java.util.List;
+
+import com.example.demo.entity.Categoria;
+import com.example.demo.repository.categoriaRepository;
+
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.ExampleMatcher.StringMatcher;
@@ -13,8 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import aula4_execicio.demo.entity.Categoria;
-import aula4_execicio.demo.repository.categoriaRepository;
+
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping(value = "/categoria")
+@RequestMapping(value = "/api/categoria")
 public class categoriaController {
     private categoriaRepository categoriaRepository1;
 
