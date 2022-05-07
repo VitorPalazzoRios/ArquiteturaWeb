@@ -1,64 +1,74 @@
 package com.example.odsparatodos.entity;
 
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tb_Projeto")
-public class Projeto {
+@Table(name="tb_ODS")
+public class ODS {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private int id;
     @Column(length = 100)
     private String nome,descricao;
-    @OneToMany(mappedBy = "projeto", fetch = FetchType.EAGER)
-    private List<Pessoa> pessoas;   
-
+    @ManyToOne
+    @JoinColumn(name = "Projeto_id")
+    private Projeto projeto;
     
-    public Projeto(int id, String nome, String descricao) {
+    public ODS(int id, String nome, String descricao, Projeto projeto) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
+        this.projeto = projeto;
     }
-    public Projeto() {
+
+    public ODS() {
     }
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public String getDescricao() {
         return descricao;
     }
+
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
-    // @Override
-    // public String toString() {
-    //     return "Id: " + id + ", nome: " + nome + ", Pessoa: " + 
-    //     (pessoa != null ? pessoa.getNome() : "");  
-    // }
-    // public Pessoa getPessoa() {
-    //     return pessoa;
-    // }
-    // public void setPessoa(Pessoa pessoa) {
-    //     this.pessoa = pessoa;
-    // }
+    public Projeto getProjeto() {
+        return projeto;
+    }
+
+    public void setProjeto(Projeto projeto) {
+        this.projeto = projeto;
+    }
+
+    @Override
+    public String toString() {
+        return "ODS [descricao=" + descricao + ", id=" + id + ", nome=" + nome + ", projeto=" + projeto + "]";
+    }
+    
 }

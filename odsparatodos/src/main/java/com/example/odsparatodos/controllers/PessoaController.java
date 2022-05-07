@@ -2,6 +2,8 @@ package com.example.odsparatodos.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.example.odsparatodos.Repository.pessoaRepository;
 //import com.example.odsparatodos.entity.PessoaJuridica;
 import com.example.odsparatodos.entity.Pessoa;
@@ -27,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping(value = "/api/Pessoa")
+@RequestMapping(value = "/api/pessoa")
 public class PessoaController {
     private pessoaRepository pessoaRepository1;
 
@@ -44,7 +46,7 @@ public class PessoaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Pessoa save(@RequestBody Pessoa Pessoa) {
+    public Pessoa save(@Valid@RequestBody Pessoa Pessoa) {
         return pessoaRepository1.save(Pessoa);
     }
 

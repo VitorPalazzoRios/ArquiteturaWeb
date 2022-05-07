@@ -1,13 +1,13 @@
 package com.example.odsparatodos.entity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="tb_Projeto")
@@ -17,12 +17,12 @@ public class Pessoa {
     @Column(name="id")
     private int id;
     @Column(length = 100)
+    @NotEmpty(message = "Nome/email/senha são obrigatório")
     private String nome,email,senha;
-    @OneToMany
-    @JoinColumn(name = "pessoaFisica_id")
+    @ManyToOne
+    @JoinColumn(name = "Projeto_id")
     private Projeto projeto;
-    
-    
+     
     public Pessoa(int id, String nome, String email,String senha) {
         this.id = id;
         this.nome = nome;
@@ -56,15 +56,15 @@ public class Pessoa {
         this.senha = senha;
     }
     
-    @Override
-    public String toString() {
-        return "Id: " + id + ", nome: " + nome + ", Projeto: " + 
-        (projeto != null ? projeto.getNome() : "");
-    }
     public Projeto getProjeto() {
         return projeto;
     }
     public void setProjeto(Projeto projeto) {
         this.projeto = projeto;
+    }
+    @Override
+    public String toString() {
+        return "Pessoa [email=" + email + ", id=" + id + ", nome=" + nome + ", projeto=" + projeto + ", senha=" + senha
+                + "]";
     }
 }

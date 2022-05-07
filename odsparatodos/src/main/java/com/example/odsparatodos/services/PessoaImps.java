@@ -15,7 +15,6 @@ import com.example.odsparatodos.exceptions.RegraNegocioException;
 
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
-
 @Service
 @RequiredArgsConstructor
 public class PessoaImps implements PessoaService{
